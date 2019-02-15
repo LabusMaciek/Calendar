@@ -1,0 +1,124 @@
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        [excludeDays]="excludeDays"
+      >
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        [excludeDays]="excludeDays"
+      >
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>
+      {{ viewDate | calendarDate:(view +
+      'ViewTitle'):'en':weekStartsOn:excludeDays }}
+    </h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="view = 'month'"
+        [class.active]="view === 'month'"
+      >
+        Month
+      </div>
+      <!--<div-->
+        <!--class="btn btn-primary"-->
+        <!--(click)="view = 'week'"-->
+        <!--[class.active]="view === 'week'"-->
+
+      <!--&gt;-->
+        <!--Week-->
+      <!--</div>-->
+      <!--<div-->
+        <!--class="btn btn-primary"-->
+        <!--(click)="view = 'day'"-->
+        <!--[class.active]="view === 'day'"-->
+      <!--&gt;-->
+        <!--Day-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+<br/>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [excludeDays]="excludeDays"
+    (dayClicked)="openThis('newModalContent')">
+    <!--(dayClicked)="open('newModalContent')">-->
+  <!--(dayClicked)="dayClicked($event.day)">-->
+    <!--open(content)= -->
+  </mwl-calendar-month-view>
+</div>
+
+<!--<button (click)="eventSave()"></button>-->
+<!--<mwl-calendar-week-view-->
+<!--*ngSwitchCase="'week'"-->
+<!--[excludeDays]="excludeDays"-->
+<!--[viewDate]="viewDate"-->
+<!--[events]="events"-->
+<!--(dayHeaderClicked)="dayClicked($event.day)">-->
+<!--</mwl-calendar-week-view>-->
+
+<!--<mwl-calendar-day-view-->
+<!--*ngSwitchCase="'day'"-->
+<!--[viewDate]="viewDate"-->
+<!--[events]="events"-->
+<!--&gt;-->
+<!--</mwl-calendar-day-view>-->
+<!--</div>-->
+
+
+
+
+
+<!--  syf ponizej    -->
+
+<!--<div ng-controller="TimespanClickCtrl as vm">-->
+  <!--<div class="alert alert-info">-->
+    <!--Click on a day on the view.-->
+    <!--&lt;!&ndash;<strong ng-show="vm.lastDateClicked">You clicked on this day: {}</strong>&ndash;&gt;-->
+  <!--</div>-->
+  <!--&lt;!&ndash;<ng-include src="'newModalContent.html'"></ng-include>&ndash;&gt;-->
+  <!--<mwl-calendar-week-view-->
+    <!--events="vm.events"-->
+    <!--view="vm.calendarView"-->
+    <!--view-date="vm.viewDate"-->
+    <!--cell-auto-open-disabled="true"-->
+    <!--on-timespan-click="vm.timespanClicked(calendarDate)">-->
+  <!--</mwl-calendar-week-view>-->
+<!--</div>-->
+
+
+<!--<mwl-calendar-week-view-->
+<!--[viewDate]="viewDate"-->
+<!--&lt;!&ndash;[refresh]="refresh"&ndash;&gt;-->
+<!--</mwl-calendar-week-view>-->
+
+
+
