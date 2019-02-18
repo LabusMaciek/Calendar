@@ -10,6 +10,13 @@ import {DAYS_OF_WEEK} from 'angular-calendar';
 })
 export class CalendarComponent implements OnInit {
 
+  model: EventViewModel = {
+    start: '',
+    end: '',
+    title: ''
+  };
+
+
   viewDate: Date = new Date();
   selectedDay: WeekDay;
   view: string;
@@ -29,6 +36,12 @@ export class CalendarComponent implements OnInit {
   }
 
 
+  saveEvent() {
+
+    alert('model ' + this.model);
+  }
+
+
   ngOnInit() {
     this.viewDate = new Date();
     // this.event = [];
@@ -37,7 +50,7 @@ export class CalendarComponent implements OnInit {
 
 }
 
-export interface EventInterface {
+export interface EventViewModel {
 
   start: string;
   end: string;

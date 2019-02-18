@@ -60,8 +60,75 @@
 
 
 <app-dialog [(visible)]="showDialog">
-  <h1>hello world</h1>
-  <button (click) ="showDialog = !showDialog" class="btn"> Close</button>
+
+  <form name="form" #f="ngForm" (ngsSubmit)="f.form.valid && saveEvent()" novalidate class="event-form" >
+
+    <!-- start event -->
+    <div class="form-group">
+      <label for="start">Start event</label>
+      <input type="text"
+             id="start"
+             class="form-control"
+             name="start"
+             placeholder="When event start"
+             [(ngModel)]="model.start"
+             #name="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+             required/>
+      <!-- input validation group -->
+      <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+        <!-- individual validation errors -->
+        <div *ngIf="name.errors?.required">Field is required</div>
+      </div>
+    </div>
+
+    <!-- end event -->
+    <div class="form-group">
+      <label for="end">Finish event</label>
+      <input type="text"
+             id="end"
+             class="form-control"
+             name="end"
+             placeholder="Finish event"
+             [(ngModel)]="model.end"
+             #name="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+             required/>
+      <!-- input validation group -->
+      <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+        <!-- individual validation errors -->
+        <div *ngIf="name.errors?.required">Field is required</div>
+      </div>
+    </div>
+
+    <!-- title event -->
+    <div class="form-group">
+      <label for="title">Title event</label>
+      <input type="text"
+             id="title"
+             class="form-control"
+             name="title"
+             placeholder="title event"
+             [(ngModel)]="model.title"
+             #name="ngModel"
+             [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+             required/>
+      <!-- input validation group -->
+      <div *ngIf="f.submitted && name.invalid" class="invalid-input">
+        <!-- individual validation errors -->
+        <div *ngIf="name.errors?.required">Field is required</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info pull-right">
+      <i class="fa fa-envelope-o"></i>
+      <span> Submit event</span>
+    </button>
+
+
+
+  </form>
+
 </app-dialog>
 
 

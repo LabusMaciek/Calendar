@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Notebook} from "../notes/model/notebook";
-import {FeedbackViewModel} from "../feedback/feedback.component";
-import {Note} from "../notes/model/note";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Notebook} from '../notes/model/notebook';
+import {FeedbackViewModel} from '../feedback/feedback.component';
+import {Note} from '../notes/model/note';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE_URL = window["cfgApiBaseUrl"] + "/api";
+  private BASE_URL = window['cfgApiBaseUrl'] + '/api';
   public ALL_NOTEBOOKS_URL = `${this.BASE_URL}/notebooks/all`;
   private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedback`;
   private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}/notebooks`;
@@ -52,7 +52,7 @@ export class ApiService {
     return this.http.post<Note>(this.SAVE_UPDATE_NOTE_URL, note);
   }
 
-  deleteNote(noteId:string):Observable<any>{
+  deleteNote(noteId: string): Observable<any> {
     return this.http.delete(this.DELETE_NOTE_URL + noteId);
   }
 }
