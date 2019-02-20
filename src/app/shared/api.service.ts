@@ -9,8 +9,9 @@ import {Note} from '../notes/model/note';
   providedIn: 'root'
 })
 export class ApiService {
+
   private BASE_URL = window['cfgApiBaseUrl'] + '/api';
-  public ALL_NOTEBOOKS_URL = `${this.BASE_URL}/notebooks/all`;
+  private ALL_NOTEBOOKS_URL = `${this.BASE_URL}/notebooks/all`;
   private SEND_FEEDBACK_URL = `${this.BASE_URL}/feedback`;
   private SAVE_UPDATE_NOTEBOOK = `${this.BASE_URL}/notebooks`;
   private DELETE_NOTEBOOK_URL = `${this.BASE_URL}/notebooks/`;
@@ -18,7 +19,7 @@ export class ApiService {
   private NOTES_BY_NOTEBOOK_URL = `${this.BASE_URL}/notes/byNotebook/`;
   private SAVE_UPDATE_NOTE_URL = `${this.BASE_URL}/notes`;
   private DELETE_NOTE_URL = `${this.BASE_URL}/notes/`;
-
+  private ALL_EVENT_URL = `${this.BASE_URL}/event`;
 
   constructor(private http: HttpClient) {
 
@@ -55,4 +56,9 @@ export class ApiService {
   deleteNote(noteId: string): Observable<any> {
     return this.http.delete(this.DELETE_NOTE_URL + noteId);
   }
-}
+
+  displayEvent(): Observable<any> {
+    return this.http.get(this.ALL_EVENT_URL);
+  }
+
+ }
